@@ -1576,6 +1576,7 @@ function isliving() public view returns (bool) {
 }
 
 function burnNFT() public {
+    require (msg.sender == ownerOf(1));
     _burn(1);
 }
 
@@ -1583,5 +1584,4 @@ constructor() ERC721 ("LifeIsNFT" , "LIFE") public {
     _mint(_msgSender() , 1);
     _setTokenURI( 1 ,  "https://nandemotoken.github.io/LifeIsNFT/LifeIsNFT.json");
     }
-
 }
