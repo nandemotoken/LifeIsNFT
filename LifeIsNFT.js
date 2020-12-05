@@ -434,7 +434,7 @@ const abi = [
 
 
 const Web3 = require("web3")
-const MyInfuraioApiKey = "8cbea3ddbXXXXXXXXXXXXXXXXXXX"
+const MyInfuraioApiKey = "8cbeaxxxxxxxxxxxxxxxxxxxxx"
 
 async function setup(){
 //metamaskの準備
