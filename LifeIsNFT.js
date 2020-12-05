@@ -461,17 +461,13 @@ setup()
 
 const raspi = require('raspi');
 const PWM = require('raspi-pwm').PWM;
+let living;
 
 raspi.init(function() {
   const  pwm = new PWM('GPIO18');
-  if (checkLiving()){
-  //pwm.write(0.03);
-  console.log("living")
-  }else {
-  //pwm.write(0.09);
-  console.log("dead")  
-  }
-  }
-  while(1);
+  setInterval(function(){
+  living = checkLiving()
+  console.log(living ? "living" : "dead" );
+  pwm.write(living ? 0.03 : 0.09)
+  } , 60000)
 });
-
