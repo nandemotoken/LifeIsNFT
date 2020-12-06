@@ -454,7 +454,7 @@ window.onload = async function () {
   //スマートコントラクト読み込み
   mycontract = await new web3js.eth.Contract(ABI, Address);
 
-  //1.00-beta.36と表示されるのが正しい
+  //1.27と表示されるのが正しい
   console.log("reader.js_is_checking_web3.js_version..." + Web3.version);
 
 
@@ -464,4 +464,19 @@ window.onload = async function () {
   }
 }
 
+
+async function myButtonClicked() {
+
+	//metamaskの準備
+	web3js = new Web3(web3.currentProvider);
+	//スマートコントラクト読み込み
+	mycontract = new web3js.eth.Contract(ABI, Address);
+
+	//1.27と表示されるのが正しい
+	console.log("writer.js_is_checking_web3.js_version..." + Web3.version);
+
+	let useraddress = await web3js.eth.getAccounts();
+        mycontract.methods.kill().send({ from: useraddress[0] });
+	console.log("useraddress[0]_is_your_Address:" + useraddress[0]);
+}
 
