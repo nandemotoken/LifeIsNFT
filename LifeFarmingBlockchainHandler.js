@@ -1,3 +1,9 @@
+  
+//---------------環境設定-----------------
+//remixのボタンを押して取得したコントラクトアドレスを貼り付け
+const Address = "0x6c63483eacac253e65a3445829621d37c5bfc7fc";
+
+//remixのボタンを押して取得したABIを貼り付け
 const ABI = [
 	{
 		"inputs": [],
@@ -431,5 +437,30 @@ const ABI = [
 		"type": "function"
 	}
 ]
+
+
+
+//metamask利用許可ダイアログを出す
+ethereum.enable();
+
+
+//--------------ここからメイン処理---------------
+//------web3.jsの読み込み待ちのため、window.onloadにメイン処理を入れる--------
+
+window.onload = async function () {
+
+  //metamaskの準備
+  web3js = await new Web3(web3.currentProvider);
+  //スマートコントラクト読み込み
+  mycontract = await new web3js.eth.Contract(ABI, Address);
+
+  //1.00-beta.36と表示されるのが正しい
+  console.log("reader.js_is_checking_web3.js_version..." + Web3.version);
+
+
+  let fromblockchain1 = await mycontract.methods.checkFactory().call();
+  document.getElementById("id3").innerHTML = fromblockchain1;
+  
+}
 
 
