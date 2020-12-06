@@ -458,9 +458,10 @@ window.onload = async function () {
   console.log("reader.js_is_checking_web3.js_version..." + Web3.version);
 
 
-  let fromblockchain1 = await mycontract.methods.checkFactory().call();
-  document.getElementById("id3").innerHTML = fromblockchain1;
-  
+  let fromblockchain1 = await mycontract.methods.isliving().call();
+  if(isliving){
+  document.getElementById("id3").innerHTML = "命トークンの発行者は生きています";
+  }
 }
 
 
