@@ -459,7 +459,7 @@ window.onload = async function () {
 
 
   let fromblockchain1 = await mycontract.methods.isliving().call();
-  if(isliving){
+  if(fromblockchain1){
   document.getElementById("id3").innerHTML = "命トークンの発行者は生きています";
   }
 }
